@@ -1,0 +1,7 @@
+
+
+@media screen and (min-width: 671px) {
+    .header__menu {
+        display: none;
+    }
+}

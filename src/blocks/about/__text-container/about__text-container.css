@@ -1,0 +1,10 @@
+.about__text-container {
+    margin: 51px 56px 0;
+}
+
+@media screen and (max-width: 670px) {
+    .about__text-container {
+        width: 288px;
+        margin: 24px auto 0;
+    }
+}

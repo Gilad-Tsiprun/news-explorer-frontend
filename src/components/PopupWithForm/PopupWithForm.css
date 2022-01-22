@@ -1,0 +1,12 @@
+@import '../../blocks/popup-box/popup-box.css';
+@import '../../blocks/popup-box/__container/popup-box__container.css';
+@import '../../blocks/popup-box/_opened/popup-box_opened.css';
+@import '../../blocks/popup-box/__action/_btn/popup-box__action_btn_close.css';
+@import '../../blocks/popup-box/__action/_submit/popup-box__action_submit.css';
+@import '../../blocks/popup-box/__title/popup-box__title.css';
+@import '../../blocks/input/input.css';
+@import '../../blocks/input/__text/input__text.css';
+@import '../../blocks/input/__text/_invalid/input__text_invalid.css';
+@import '../../blocks/input-error/input-error.css';
+@import '../../blocks/auth/__text-link/auth__text-link.css';
+@import '../../blocks/auth/__link/auth__link.css';

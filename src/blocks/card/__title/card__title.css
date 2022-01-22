@@ -1,0 +1,26 @@
+.card__title {
+    margin: 0;
+    font-size: 26px;
+    line-height: 30px;
+    font-family: Roboto Slab, serif;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 670px) {
+    .card__title {
+        margin-bottom: 14px;
+        font-size: 22px;
+        line-height: 24px;
+        -webkit-line-clamp: 2;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .card__title {
+        font-size: 22px;
+        line-height: 24px;
+    }
+}

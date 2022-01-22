@@ -1,0 +1,24 @@
+.about__title {
+    margin: 0 0 24px;
+    font-family: Roboto Slab;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 46px;
+    color: #1A1B22;
+}
+
+@media screen and (max-width: 670px) {
+    .about__title {
+        margin: 0 0 16px;
+        font-size: 30px;
+        line-height: 40px;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .about__title {
+        font-size: 30px;
+        line-height: 40px;
+    }
+}

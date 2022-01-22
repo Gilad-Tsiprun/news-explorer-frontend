@@ -1,0 +1,16 @@
+@import '../../blocks/card/card.css';
+@import '../../blocks//card/__image/card__image.css';
+@import '../../blocks/card/__button/card__button.css';
+@import '../../blocks/card/__text-container/card__text-container.css';
+@import '../../blocks/card/__paragraph/card__paragraph.css';
+@import '../../blocks/card/__text/card__text.css';
+@import '../../blocks/card/__title/card__title.css';
+@import '../../blocks/card/__date/card__date.css';
+@import '../../blocks/card/__source/card__source.css';
+@import '../../blocks/card/__button-container/card__button-container.css';
+@import '../../blocks/card/__save/card__save.css';
+@import '../../blocks/card/__login/card__login.css';
+@import '../../blocks/card/__login/_hidden/card__login_hidden.css';
+@import '../../blocks/card/__remove/card__remove.css';
+@import '../../blocks/card/__remove-text/card__remove-text.css';
+@import '../../blocks/card/__keyword/card__keyword.css';

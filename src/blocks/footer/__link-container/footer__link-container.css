@@ -1,0 +1,11 @@
+.footer__link-container {
+    display: flex;
+}
+
+@media screen and (max-width: 670px) {
+    .footer__link-container {
+        flex-direction: column;
+        justify-content: space-between;
+        height: 74px;
+    }
+}

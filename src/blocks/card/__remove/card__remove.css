@@ -1,0 +1,20 @@
+.card__remove {
+    border: 0;
+    background-image: url(../../../images/card/icon/remove.png);
+    background-repeat: no-repeat;
+    color: #B6BCBF;
+    background-size: 18px 19px;
+    background-position: center;
+    background-color: #FFFFFF;
+    opacity: 1;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 8px;
+    transition: opacity 1s ease-in-out 0s;
+    cursor: pointer;
+}
+
+.card__remove:hover {
+    background-image: url(../../../images/card/icon/remove_hover.png);
+}

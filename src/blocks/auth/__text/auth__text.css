@@ -1,0 +1,18 @@
+.auth__text {
+    margin: 0 0 9px 36px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: start;
+    color: #2F71E5;
+}
+
+@media screen and (max-width: 670px) {
+    .auth__text {
+        width: 288px;
+        margin: 0 0 9px 16px;
+    }
+}
+

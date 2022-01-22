@@ -1,0 +1,39 @@
+.cards__show-more {
+    display: block;
+    margin: 64px auto 0;
+    width: 268px;
+    height: 64px;
+    background: #FFFFFF;
+    border-radius: 80px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #1A1B22;
+    border: 0;
+    opacity: 1;
+    transition: opacity 1s ease-in-out 0s;
+}
+
+@media screen and (max-width: 670px) {
+    .cards__show-more {
+        margin: 21px auto 0;
+        width: 288px;
+        height: 56px;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .cards__show-more {
+        margin: 32px auto 0;
+        width: 240px;
+        height: 56px;
+    }
+}
+
+.cards__show-more:hover {
+    background: #E8E8E8;
+    opacity: 0.9;
+}

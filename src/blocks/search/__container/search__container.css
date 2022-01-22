@@ -1,0 +1,18 @@
+.search__container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 608px
+}
+
+@media screen and (max-width: 670px) {
+    .search__container {
+        width: 288px;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .search__container {
+        width: 448px;
+    }
+}

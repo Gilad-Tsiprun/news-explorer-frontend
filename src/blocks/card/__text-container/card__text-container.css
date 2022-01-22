@@ -1,0 +1,26 @@
+.card__text-container {
+    /* display: flex;
+    flex-grow: 1;
+    column-gap: 0;
+    row-gap: 0;
+    height: 304px;
+    max-height: 304px; */
+    box-sizing: border-box;
+    position: relative;
+    height: 304px;
+    margin: 0 24px;
+}
+
+@media screen and (max-width: 670px) {
+    .card__text-container {
+        height: 244px;
+        margin: 0 16px;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .card__text-container {
+        height: 270px;
+        margin: 0 16px;
+    }
+}

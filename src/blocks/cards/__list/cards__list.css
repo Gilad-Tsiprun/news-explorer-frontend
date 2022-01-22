@@ -1,0 +1,28 @@
+.cards__list {
+    margin: 0 104px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: space-between;
+    flex-direction: row;
+    list-style-type: none;
+    row-gap: 16px;
+    column-gap: 16px;
+}
+
+@media screen and (max-width: 670px) {
+    .cards__list {
+        margin: 0 16px;
+        row-gap: 8px;
+        column-gap: 8px;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .cards__list {
+        margin: 0 40px;
+        row-gap: 8px;
+        column-gap: 8px;
+    }
+}

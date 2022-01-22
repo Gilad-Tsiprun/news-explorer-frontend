@@ -1,0 +1,5 @@
+@media screen and (max-width: 670px) {
+    .navbar__item {
+        text-align: start;
+    }
+}

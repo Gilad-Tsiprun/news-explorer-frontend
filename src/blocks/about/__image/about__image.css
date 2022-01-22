@@ -1,0 +1,26 @@
+.about__image {
+    margin: 0 0 80px;
+}
+
+@media screen and (max-width: 670px) {
+    .about__image {
+        margin: 0 auto;
+        height: 272px;
+        width: 272px;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .about__image {
+        margin: 61px 0;
+        height: 232px;
+        width: 232px;
+    }
+}
+
+@media screen and (min-width: 901px) and (max-width: 990px) {
+    .about__image {
+        height: 400px;
+        width: 400px;
+    }
+}

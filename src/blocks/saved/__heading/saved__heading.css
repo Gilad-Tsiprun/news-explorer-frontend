@@ -1,0 +1,23 @@
+.saved__heading {
+    margin: 0 0 28px;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba(26, 27, 34, 0.5);
+}
+
+@media screen and (max-width: 670px) {
+    .saved__heading {
+        margin: 0 0 16px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .saved__heading {
+        margin: 0 0 16px;
+        font-size: 14px;
+    }
+}

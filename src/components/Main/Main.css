@@ -1,0 +1,4 @@
+@import '../../blocks/main/main.css';
+@import '../../blocks/cards/cards.css';
+@import '../../blocks/cards/__title/cards__title.css';
+@import '../../blocks/cards/__show-more/cards__show-more.css';
