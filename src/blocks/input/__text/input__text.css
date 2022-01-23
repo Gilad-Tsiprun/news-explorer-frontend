@@ -24,14 +24,7 @@
 
 @media screen and (max-width: 670px) {
     .input__text {
-        width: 288px;
-        padding-bottom: 9px;
-    }
-}
-
-@media screen and (min-width: 671px) and (max-width: 900px) {
-    .input__text {
-        width: 238px;
+        width: 100%;
         padding-bottom: 9px;
     }
 }

@@ -1,7 +1,6 @@
-@import '../../blocks/navbar/navbar.css';
-@import '../../blocks/navbar/__header/navbar__header.css';
-@import '../../blocks/navbar/__header/_disabled/navbar__header_disabled.css';
 @import '../../blocks/link/link.css';
+@import '../../blocks/header/__navbar/header__navbar.css';
+@import '../../blocks/header/__navbar/_disabled/header__navbar_disabled.css';
 @import '../../blocks/header/header.css';
 @import '../../blocks/header/_type_navbar/header_type_navbar.css';
 @import '../../blocks/header/__text/header__text.css';
@@ -17,4 +16,4 @@
 @import '../../blocks/header/__logout/_dark/header__logout_dark.css';
 @import '../../blocks/header/__menu/header__menu.css';
 @import '../../blocks/header/__menu/_disabled/header__menu_disabled.css';
-@import '../../blocks/navbar/__item/navbar__item.css';
+@import '../../blocks/header/__navbar-item/header__navbar-item.css';

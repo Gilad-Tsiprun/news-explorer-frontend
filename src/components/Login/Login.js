@@ -14,7 +14,7 @@ function Login({ handleLogin, onClose }) {
 
   return (
     <PopupWithForm onClose={onClose} handleSubmit={handleSubmit}>
-      <p className="auth__text auth__email">Email</p>
+      <p className="popup-box__text popup-box__email">Email</p>
       <input id="email" required name="email"
         type="text" value={email}
         className="input__text input__text_type_email"
@@ -22,7 +22,7 @@ function Login({ handleLogin, onClose }) {
         onChange={e => setEmail(e.target.value)}
       />
       <span className="input-error email-input-error" />
-      <p className="auth__text auth__password">Password</p>
+      <p className="popup-box__text popup-box__password">Password</p>
       <input id="password" required name="password"
         type="password" value={password}
         className="input__text input__text_type_password"

@@ -16,4 +16,6 @@
 @import './components/Register/Register.css';
 @import './components/SavedNewsHeader/SavedNewsHeader.css';
 @import './components/SavedNews/SavedNews.css';
+@import './components/InfoPopup/InfoPopup.css';
+@import './components/NotFound/NotFound.css';
 @import './components/Navigation/Navigation.css';

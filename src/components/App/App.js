@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Switch, Redirect, useLocation, useHistory } from 'react-router-dom';
 import Header from '../Header/Header.js';
 import Search from '../Search/Search.js';
 import Main from '../Main/Main.js';
@@ -8,9 +9,8 @@ import About from '../About/About.js';
 import Footer from '../Footer/Footer.js';
 import Login from '../Login/Login.js';
 import Register from '../Register/Register.js';
+// import InfoPopup from '../InfoPopup/InfoPopup.js';
 import Navigation from '../Navigation/Navigation.js';
-// import Preloader from '../Preloader/Preloader.js';
-import { Route, Switch, Redirect, useLocation, useHistory } from 'react-router-dom';
 import { newsCards } from '../../utils/data.js';
 import './App.css';
 
@@ -103,7 +103,7 @@ function App() {
           isSaved={isSaved} />
 
       </Route> */}
-      {/* <Preloader /> */}
+      {/* <InfoPopup onClose={handleClosePopup} /> */}
       <Footer />
     </>
   );

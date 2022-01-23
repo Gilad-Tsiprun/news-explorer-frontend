@@ -35,8 +35,8 @@ function PopupWithForm({ name, isOpen, onClose, children, onSubmit }) {
             {authText}
           </button>
         </form>
-        <div className="auth__signup">
-          <p className="auth__text-link">or  <Link to={linkTo} className="auth__link">
+        <div className="popup-box__signup">
+          <p className="popup-box__text-link">or  <Link to={linkTo} className="popup-box__link">
             {linkTo === '/login' ? 'Sign in' : 'Sign up'}
           </Link>
           </p>

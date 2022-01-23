@@ -1,5 +1,5 @@
 @media screen and (max-width: 670px) {
-    .navbar__header_disabled {
+    .header__navbar_disabled {
         display: none;
     }
 }

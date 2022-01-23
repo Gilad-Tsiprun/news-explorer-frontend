@@ -1,6 +1,7 @@
 // import React, { useContext } from 'react'
 import React, { useState } from 'react'
-//import avatar from '../images/profile-pic.jpg'
+// import Preloader from '../Preloader/Preloader.js';
+// import NotFound from '../NotFound/NotFound.js';
 import NewsCardList from '../NewsCardList/NewsCardList.js';
 // import SearchForm from '../SearchForm/SearchForm.js';
 
@@ -35,6 +36,8 @@ function Main({ isSaved, isSearched, isLoggedIn, onCardClick, newsCards, onCardS
           <button type="button" className="cards__show-more" onClick={handleShowMore} >Show more</button>
         </section>
 
+        {/* <Preloader /> */}
+        {/* <NotFound /> */}
       </main> : ''}
     </>
   )

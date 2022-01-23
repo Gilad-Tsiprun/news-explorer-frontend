@@ -34,7 +34,7 @@ function Header({ name, logout, isLoggedIn, isHome, pathname, isNavBar }) {
   )
 
   const headerNavBarDisabled = (
-    `${!isNavBar ? 'navbar__header_disabled' : ''}`
+    `${!isNavBar ? 'header__navbar_disabled' : ''}`
   )
 
   const [savedArticlesActive, setSavedArticlesActive] = useState(false);
@@ -50,15 +50,15 @@ function Header({ name, logout, isLoggedIn, isHome, pathname, isNavBar }) {
       <h2 className={`header__text header__title ${headerTitleNav} ${headerDarkText}`}>
         NewsExplorer <span className={`header__menu ${headerMenuDisabled}`}><Link to="/nav"><img src={isHome ? menu : menuDark} alt='menu' /></Link></span>
       </h2>
-      <nav className={`navbar navbar__header ${headerNavBarDisabled}`}>
-        <Link to="/" className={`header__text header__home navbar__item ${homeActive} ${headerDarkText} link`}>Home</Link>
+      <nav className={`header__navbar ${headerNavBarDisabled}`}>
+        <Link to="/" className={`header__text header__home header__navbar-item ${homeActive} ${headerDarkText} link`}>Home</Link>
         {isLoggedIn
           ?
           <>
-            <Link to="/saved-news" className={`header__text navbar__item header__saved-articles ${savedArticlesActive} ${headerDarkText} link`}>Saved articles</Link>
+            <Link to="/saved-news" className={`header__text header__navbar-item header__saved-articles ${savedArticlesActive} ${headerDarkText} link`}>Saved articles</Link>
             <Link to="/"
               onClick={logout}
-              className={`header__text navbar__item header__logout ${headerLogoutDark} ${headerDarkText} link`}>{name} <span className="header__logout_image"><img src={isHome ? logoutLight : logoutDark} alt="logout" />
+              className={`header__text header__navbar-item header__logout ${headerLogoutDark} ${headerDarkText} link`}>{name} <span className="header__logout_image"><img src={isHome ? logoutLight : logoutDark} alt="logout" />
               </span>
             </Link>
           </>

@@ -1,6 +1,6 @@
-.auth__text {
-    margin: 0 0 9px 36px;
-    font-family: Inter;
+.popup-box__text {
+    margin: 0 0 9px;
+    font-family: Inter, serif;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -10,9 +10,9 @@
 }
 
 @media screen and (max-width: 670px) {
-    .auth__text {
+    .popup-box__text {
         width: 288px;
-        margin: 0 0 9px 16px;
+        margin: 0 0 9px;
     }
 }
 
