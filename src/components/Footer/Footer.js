@@ -10,7 +10,7 @@ function Footer() {
       <nav className="footer__navbar">
         <div className="footer__link-container">
           <Link to="/" className="footer__text footer__home link">Home</Link>
-          <a href="https://practicum.yandex.com/" className="footer__text footer__yandex link">Practicum by Yandex</a>
+          <a href="https://practicum.yandex.com/" className="footer__text footer__yandex link" target="_blank" rel="noopener noreferrer">Practicum by Yandex</a>
         </div>
         <a href="https://github.com/Phoenix801" className="link" target="_blank" rel="noopener noreferrer"><img src={githubImage} className="footer__github" alt="github profile" /></a>
         <a href="https://stackoverflow.com/users/6365408/gilad" className="link" target="_blank" rel="noopener noreferrer"><img src={stackOverflowImage} className="footer__stackoverflow" alt="stack overflow profile" /></a>

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function SearchForm({ handleSearchClick }) {
   const [searchText, setSearchText] = useState('');
 
+
   function handleSearchChange(e) {
     setSearchText(e.target.value);
   }
@@ -18,7 +19,7 @@ function SearchForm({ handleSearchClick }) {
         onChange={handleSearchChange}
         value={searchText || ''} >
       </input>
-      <button type="submit" className="search__button" onClick={handleSearchClick}>Search</button>
+      <button type="submit" className='search__button' onClick={handleSearchClick}>Search</button>
     </form>
   )
 }

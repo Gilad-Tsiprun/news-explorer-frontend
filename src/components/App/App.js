@@ -61,7 +61,7 @@ function App() {
         </SavedNews>
         :
         <>
-          <Search onSearchClick={handleSearchClick}>
+          <Search onSearchClick={handleSearchClick} >
             <Header pathname={pathname} name='Gilad' isLoggedIn={isLoggedIn} isHome={true} logout={handleLogout} />
           </Search>
 
