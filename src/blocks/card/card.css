@@ -1,0 +1,20 @@
+.card {
+    padding: 0;
+    position: relative;
+    width: 400px;
+    overflow: hidden;
+    background: #FFFFFF;
+    border-radius: 10px 10px 10px 10px;
+}
+
+@media screen and (max-width: 670px) {
+    .card {
+        width: 288px;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .card {
+        width: 224px;
+    }
+}

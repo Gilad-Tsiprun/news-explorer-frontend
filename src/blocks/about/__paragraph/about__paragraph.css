@@ -1,0 +1,20 @@
+.about__paragraph {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #1A1B22;
+}
+
+@media screen and (min-width: 670px) and (max-width: 900px) {
+    .about__paragraph {
+        max-width: 424px;
+    }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1440px) {
+    .about__paragraph {
+        max-width: 670px;
+    }
+}

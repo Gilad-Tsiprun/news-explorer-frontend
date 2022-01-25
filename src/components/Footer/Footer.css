@@ -1,0 +1,9 @@
+@import '../../blocks/footer/footer.css';
+@import '../../blocks/footer/__link-container/footer__link-container.css';
+@import '../../blocks/footer/__copyright/footer__copyright.css';
+@import '../../blocks/footer/__github/footer__github.css';
+@import '../../blocks/footer/__home/footer__home.css';
+@import '../../blocks/footer/__stackoverflow/footer__stackoverflow.css';
+@import '../../blocks/footer/__text/footer__text.css';
+@import '../../blocks/footer/__yandex/footer__yandex.css';
+@import '../../blocks/footer/__navbar/footer__navbar.css';

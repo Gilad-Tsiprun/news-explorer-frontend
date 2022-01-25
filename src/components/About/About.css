@@ -1,0 +1,5 @@
+@import '../../blocks/about/about.css';
+@import '../../blocks/about/__image/about__image.css';
+@import '../../blocks/about/__text-container/about__text-container.css';
+@import '../../blocks/about/__title/about__title.css';
+@import '../../blocks/about/__paragraph/about__paragraph.css';

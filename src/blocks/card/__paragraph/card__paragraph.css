@@ -1,0 +1,24 @@
+.card__paragraph {
+    margin: 0;
+    position: absolute;
+    top: 132px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-width: 352px;
+}
+
+@media screen and (max-width: 670px) {
+    .card__paragraph {
+        position: static;
+        -webkit-line-clamp: 3;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .card__paragraph {
+        top: 134px;
+        max-width: 192px;
+    }
+}

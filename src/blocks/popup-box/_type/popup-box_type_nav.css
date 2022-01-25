@@ -1,0 +1,13 @@
+.popup-box_type_nav {
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    top: 0;
+    left: 0;
+}
+
+@media screen and (min-width: 671px) {
+    .popup-box_type_nav {
+        display: none;
+    }
+}

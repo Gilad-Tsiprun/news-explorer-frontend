@@ -1,0 +1,11 @@
+.popup-box__link_info {
+    display: block;
+    padding: 0 36px 51px;
+    text-align: start;
+}
+
+@media screen and (max-width: 670px) {
+    .popup-box__link_info {
+        padding: 0 16px 51px;
+    }
+}

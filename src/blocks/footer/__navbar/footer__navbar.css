@@ -1,0 +1,6 @@
+.footer__navbar {
+    display: flex;
+    justify-content: space-between;
+    max-height: 22px;
+}
+

@@ -1,0 +1,23 @@
+.popup-box__action_submit {
+    margin: 39px auto 16px;
+    background: #2F71E5;
+    box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+    border-radius: 100px;
+    width: 358px;
+    height: 64px;
+    border: 0;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 670px) {
+    .popup-box__action_submit {
+        width: 288px;
+    }
+}
+

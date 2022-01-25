@@ -1,0 +1,16 @@
+.main {
+    padding: 0 0 80px;
+    background: #F5F6F7;
+}
+
+@media screen and (max-width: 670px) {
+    .main {
+        padding: 0 0 24px;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .main {
+        padding: 0 0 40px;
+    }
+}

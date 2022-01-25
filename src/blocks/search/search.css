@@ -1,0 +1,22 @@
+.search {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 576px;
+    margin: 0 auto;
+    background-image: url(../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 670px) {
+    .search {
+        min-height: 536px;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .search {
+        min-height: 400px;
+    }
+}

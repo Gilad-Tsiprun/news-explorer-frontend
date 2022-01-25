@@ -1,0 +1,36 @@
+.search__title {
+    margin: 0 0 16px;
+    width: 100%;
+    font-family: Roboto Slab, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 64px;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 670px) {
+    .search__title {
+        margin: 0 0 16px 3px;
+        width: 285px;
+        font-size: 36px;
+        line-height: 40px;
+    }
+}
+
+@media screen and (min-width: 671px) and (max-width: 900px) {
+    .search__title {
+        width: 385px;
+        font-size: 36px;
+        line-height: 40px;
+    }
+}
+
+@media screen and (min-width: 901px) {
+    .search__title {
+        margin: 0 0 32px;
+        width: 385px;
+        font-size: 36px;
+        line-height: 40px;
+    }
+}
