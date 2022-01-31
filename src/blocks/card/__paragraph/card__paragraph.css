@@ -3,7 +3,7 @@
     position: absolute;
     top: 132px;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
     max-width: 352px;
@@ -20,5 +20,6 @@
     .card__paragraph {
         top: 134px;
         max-width: 192px;
+        -webkit-line-clamp: 4;
     }
 }

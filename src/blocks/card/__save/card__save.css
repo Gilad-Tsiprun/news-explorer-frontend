@@ -15,7 +15,3 @@
     transition: opacity 1s ease-in-out 0s;
     cursor: pointer;
 }
-
-.card__save:hover {
-    background-image: url(../../../images/card/icon/save_hover.png);
-}

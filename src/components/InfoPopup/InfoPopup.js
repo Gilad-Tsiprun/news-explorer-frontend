@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 
-function InfoPopup({ name, isOpen, onClose, errStatus }) {
+function InfoPopup({ handleLoginOpen, name, isOpen, onClose, errStatus }) {
     const [statusText, setStatusText] = useState('Registration successfully completed!');
     useEffect(() => {
         setStatusText(errStatus ? 'Error' : 'Registration successfully completed!') //fix Error text
@@ -22,12 +22,12 @@ function InfoPopup({ name, isOpen, onClose, errStatus }) {
     }, [onClose])
 
     return (
-        <section className={`popup-box popup-box_type_${name} popup-box_opened ${isOpen ? 'popup-box_opened' : ''}`}>
+        <section className={`popup-box popup-box_type_${name} ${isOpen ? 'popup-box_opened' : ''}`}>
             <div className="popup-box__container">
                 <button type="button" className="popup-box__action popup-box__action_btn_close opacity" onClick={onClose} />
                 <h2 className="popup-box__title popup-box__title_black">{statusText}</h2>
                 <div className="popup-box__signup">
-                    <Link to={`/login`} className="popup-box__link popup-box__link_info">Sign in</Link>
+                    <Link to='/' onClick={handleLoginOpen} className="popup-box__link popup-box__link_info">Sign in</Link>
                 </div>
             </div>
         </section>

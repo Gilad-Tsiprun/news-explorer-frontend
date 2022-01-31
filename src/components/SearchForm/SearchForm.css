@@ -1,4 +1,5 @@
 @import '../../blocks/search/__button/search__button.css';
+@import '../../blocks/search/__button/_disabled/search__button_disabled.css';
 @import '../../blocks/search/__button/_active/search__button_active.css';
 @import '../../blocks/search/__input/search__input.css';
 @import '../../blocks/search/__form/search__form.css';

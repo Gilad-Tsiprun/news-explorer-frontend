@@ -1,16 +1,20 @@
 // import React, { useContext } from 'react'
-//import avatar from '../images/profile-pic.jpg'
-import React from 'react';
+import React from 'react'
+// import { CurrentUserContext } from '../../contexts/CurrentUserContext.js'
 import NewsCardList from '../NewsCardList/NewsCardList.js';
+import Header from '../Header/Header.js';
+import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader.js';
 
-// import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 
+function SavedNews({ name, onClose, logout, pathname, keyWordsText, isSearched, isLoggedIn, onCardClick, newsCards, onNewsCardSave, handleCardDelete, handleNavOpen }) {
 
-function SavedNews({ children, isSearched, isLoggedIn, onCardClick, newsCards, onNewsCardSave, onCardDelete, isSaved }) {
 
   return (
     <main className="saved">
-      {children}
+
+      <SavedNewsHeader name={name} keyWordsText={keyWordsText} cardsCount={newsCards.length} >
+        <Header onClose={onClose} pathname={pathname} name={name} isLoggedIn={isLoggedIn} isHome={false} logout={logout} handleNavOpen={handleNavOpen} />
+      </SavedNewsHeader>
       {<section className="saved__articles">
         <NewsCardList
           newsCards={newsCards}
@@ -18,9 +22,8 @@ function SavedNews({ children, isSearched, isLoggedIn, onCardClick, newsCards, o
           isSearched={isSearched}
           handleCardSave={onNewsCardSave}
           handleCardClick={onCardClick}
-          handleCardDelete={onCardDelete}
-          isShowMore={true}
-          isSaved={isSaved} />
+          handleCardDelete={handleCardDelete}
+          isShowMore={true} />
       </section>}
     </main>
   )
