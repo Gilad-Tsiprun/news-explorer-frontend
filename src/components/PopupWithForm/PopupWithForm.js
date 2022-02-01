@@ -1,15 +1,7 @@
-import { useLocation, Link } from 'react-router-dom'
-import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react';
 
-function PopupWithForm({ name, isOpen, onClose, children, onSubmit }) {
-  const { pathname } = useLocation();
-  const [linkTo, setLinkTo] = useState('/register');
-  const [authText, setAuthText] = useState('Sign in');
-  useEffect(() => {
-    setLinkTo(pathname === '/register' ? '/login' : '/register')
-    setAuthText(pathname === '/register' ? 'Sign up' : 'Sign in')
-  }, [pathname, authText])
-
+function PopupWithForm({ errorMessage, isValid, formName, handleOpenRegisterOrLogin, name, isOpen, onClose, children, handleSubmit }) {
   useEffect(() => {
     const close = (e) => {
       if (e.key === 'Escape' || e.target.classList.contains('popup-box_opened')) {
@@ -24,20 +16,28 @@ function PopupWithForm({ name, isOpen, onClose, children, onSubmit }) {
     };
   }, [onClose])
 
+
+  const submitClassDisabled = (
+    !isValid ? 'popup-box__action_submit_disabled' : ''
+  );
+
   return (
-    <section className={`popup-box popup-box_type_${name} popup-box_opened ${isOpen ? 'popup-box_opened' : ''}`}>
+    <section className={`popup-box ${isOpen ? 'popup-box_opened' : ''}`}>
       <div className="popup-box__container">
         <button type="button" className="popup-box__action popup-box__action_btn_close opacity" onClick={onClose} />
-        <h2 className="popup-box__title">{authText}</h2>
-        <form className={`input input_${name}`} name={`element-form_${name}`} onSubmit={onSubmit}>
+        <h2 className="popup-box__title">{name}</h2>
+        <form className={`input`} name={`${formName}-form`} onSubmit={handleSubmit}>
           {children}
-          <button type="submit" className={`popup-box__action popup-box__action_btn_${name} popup-box__action_submit`}>
-            {authText}
-          </button>
+          <div className="popup-box__submit-container">
+            <span className="input-error input-error_submit submit-input-error"  >{errorMessage}</span>
+            <button type="submit" className={`popup-box__action popup-box__action_submit ${submitClassDisabled}`}>
+              {name}
+            </button>
+          </div>
         </form>
         <div className="popup-box__signup">
-          <p className="popup-box__text-link">or  <Link to={linkTo} className="popup-box__link">
-            {linkTo === '/login' ? 'Sign in' : 'Sign up'}
+          <p className="popup-box__text-link">or  <Link to='/' onClick={handleOpenRegisterOrLogin} className="popup-box__link">
+            {name === 'Sign up' ? 'Sign in' : 'Sign up'}
           </Link>
           </p>
         </div>

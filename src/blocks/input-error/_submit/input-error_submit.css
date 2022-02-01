@@ -1,0 +1,8 @@
+.input-error_submit {
+    text-align: center;
+    position: absolute;
+    top: -24px;
+    width: 100%;
+    -webkit-line-clamp: 1;
+}
+

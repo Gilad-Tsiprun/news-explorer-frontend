@@ -1,0 +1,11 @@
+/* source-sans-pro-regular - latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-weight: 400;
+    src: url('./source-sans-pro-v18-latin-regular.woff'); /* IE9 Compat Modes */
+    src: url('source-sans-pro-v18-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('source-sans-pro-v18-latin-regular.woff') format('woff'), /* Modern Browsers */
+  }

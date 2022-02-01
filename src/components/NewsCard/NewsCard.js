@@ -1,10 +1,26 @@
 import React, { useState } from 'react';
 
-function NewsCard({ isSearched, newsCard, handleCardClick, handleCardSave, isSaved, handleCardDelete, isLoggedIn }) {
+function NewsCard({ isHome, searchText, newsCard, handleCardSave, handleCardDelete, isLoggedIn, savedCards }) {
   const [isLoggedInMessage, setIsLoggedInMessage] = useState(false);
   const [isRemoveMessage, setIsRemoveMessage] = useState(false);
+  const [isSaveActive, setIsSaveActive] = useState(false);
+  const [isSaveHover, setIsSaveHover] = useState(false);
 
-  const cardSaveButtonClassName = (`${isSaved() && isSearched ? 'card__save_active' : ''}`)
+  const isoDate = new Date(newsCard.publishedAt);
+  const date = (
+    `${isoDate.toLocaleString('default', { month: 'long' })} ${isoDate.getDate()}, ${isoDate.getFullYear()}`
+  ); //formatting date according to figma
+
+  const paragraph = newsCard.content.split('[')[0]; //content is cutoff with a [+xxxx characters], this cuts it of before the brackets
+
+  const cardSaveButtonActiveClassname = (
+    `${isSaveActive ? 'card__save_active' : ''}`
+  );
+
+
+  const cardSaveButtonHoverClassname = (
+    `${isSaveHover ? 'card__save_hover' : ''}`
+  );
 
   const cardDeleteButtonClassName = (
     `${'card__remove'}`
@@ -23,11 +39,25 @@ function NewsCard({ isSearched, newsCard, handleCardClick, handleCardSave, isSav
   );
 
   function handleSaveClick() {
-    handleCardSave(newsCard)
-  }
-
-  function handleClick() {
-    handleCardClick(newsCard);
+    if (isLoggedIn) {
+      if (!isSaveActive) {
+        handleCardSave({
+          keyword: searchText,
+          title: newsCard.title,
+          text: newsCard.content,
+          date: newsCard.publishedAt,
+          source: newsCard.source.name || newsCard.source.id,
+          link: newsCard.url,
+          image: newsCard.urlToImage,
+        })
+        setIsSaveActive(true);
+      }
+      else {
+        const index = savedCards.map(card => card.title).indexOf(newsCard.title);
+        handleCardDelete(savedCards[index]);
+        setIsSaveActive(false);
+      }
+    }
   }
 
   function handleDeleteClick() {
@@ -38,10 +68,15 @@ function NewsCard({ isSearched, newsCard, handleCardClick, handleCardSave, isSav
     if (!isLoggedIn) {
       setIsLoggedInMessage(true);
     }
+
+    if (!isSaveActive) {
+      setIsSaveHover(true);
+    }
   }
 
   function handleSaveLeave() {
     setIsLoggedInMessage(false);
+    setIsSaveHover(false);
   }
 
   function handleRemoveHover() {
@@ -56,13 +91,17 @@ function NewsCard({ isSearched, newsCard, handleCardClick, handleCardSave, isSav
     return (
       <>
         <button type="button"
-          className={`card__save ${cardSaveButtonClassName}`}
+          className={`card__save ${cardSaveButtonActiveClassname} ${cardSaveButtonHoverClassname}`}
           onClick={handleSaveClick}
           onMouseEnter={handleSaveHover}
           onMouseLeave={handleSaveLeave} />
         {isLoggedInMessage && <button type="button" className={cardSignInClassName} >Sign in to save articles</button>}
       </>
     )
+  }
+
+  function handleCardClick() {
+    window.open(newsCard.url, '_blank', 'noopener')
   }
 
   function SavedCardButtons() {
@@ -82,7 +121,7 @@ function NewsCard({ isSearched, newsCard, handleCardClick, handleCardSave, isSav
   function CardButtons() {
     return (
       <div className="card__button-container">
-        {isSearched
+        {isHome
           ? <SearchedCardButtons />
           : <SavedCardButtons />
         }
@@ -93,14 +132,14 @@ function NewsCard({ isSearched, newsCard, handleCardClick, handleCardSave, isSav
 
   return (
     <li className="card">
-      <button className="card__button" onClick={handleClick}>
-        <img className="card__image" src={newsCard.image} alt={newsCard.keyword} />
+      <button className="card__button" >
+        <img className="card__image" src={newsCard.urlToImage} alt={newsCard.keyword} onClick={handleCardClick} />
       </button>
       <div className="card__text-container">
-        <p className="card__date">{newsCard.date}</p>
+        <p className="card__date">{date}</p>
         <h2 className="card__title card__text">{newsCard.title}</h2>
-        <p className="card__text card__paragraph">{newsCard.text}</p>
-        <p className="card__text card__source">{newsCard.source}</p>
+        <p className="card__text card__paragraph">{paragraph}</p>
+        <p className="card__text card__source">{'' || `${newsCard.source.name.toUpperCase()}`}</p>
       </div>
       <CardButtons />
     </li>

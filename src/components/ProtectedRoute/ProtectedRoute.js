@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const ProtectedRoute = ({ component: Component, ...props }) => {
+const ProtectedRoute = ({ ...props }) => {
+  const isLoggedIn = localStorage.getItem('isLogged')
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      props.handleLoginOpen();
+    }
+  }, [isLoggedIn, props]);
+
   return (
     <Route {...props}>
-      {() => props.loggedIn ? <Component {...props} /> : <Redirect to="./login" />}
+      {() => isLoggedIn ? props.children : <Redirect to="./home" />}
     </Route>
   )
 }

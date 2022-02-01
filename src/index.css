@@ -1,6 +1,7 @@
 @import './vendor/normalize/normalize.css';
 @import './vendor/fonts/inter.css';
 @import './vendor/fonts/roboto.css';
+@import './vendor/fonts/source-sans-pro.css';
 @import './blocks/page/page.css';
 @import './components/Header/Header.css';
 @import './components/HeaderCover/HeaderCover.css';

@@ -1,35 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import useFormValidation from "../../hooks/useFormValidation";
 
-function Login({ handleLogin, onClose }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function Login({ errorMessage, formName, name, handleRegisterOpen, isOpen, handleLogin, onClose }) {
+  const { values, handleChange, errors, isValid, resetForm } = useFormValidation();
+
+  useEffect(() => {
+    if (isOpen) {
+      resetForm();
+    }
+  }, [isOpen, resetForm])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(password, email);
-    setEmail('');
-    setPassword('');
+    handleLogin(values.passwordLogin, values.emailLogin);
   }
 
+  const closeLogin = () => {
+    onClose();
+  }
+
+  const OpenRegister = () => {
+    handleRegisterOpen();
+  }
+
+
   return (
-    <PopupWithForm onClose={onClose} handleSubmit={handleSubmit}>
-      <p className="popup-box__text popup-box__email">Email</p>
-      <input id="email" required name="email"
-        type="text" value={email}
-        className="input__text input__text_type_email"
-        placeholder="Enter email"
-        onChange={e => setEmail(e.target.value)}
-      />
-      <span className="input-error email-input-error" />
-      <p className="popup-box__text popup-box__password">Password</p>
-      <input id="password" required name="password"
-        type="password" value={password}
-        className="input__text input__text_type_password"
-        placeholder="Enter password"
-        onChange={e => setPassword(e.target.value)}
-      />
-      <span className="input-error password-input-error" />
+    <PopupWithForm errorMessage={errorMessage} isValid={isValid} formName={formName} name={name} handleOpenRegisterOrLogin={OpenRegister} isOpen={isOpen} onClose={closeLogin} handleSubmit={handleSubmit}>
+      <div className="popup-box__input-container">
+        <p className="popup-box__text popup-box__email">Email</p>
+        <input id={`${formName}-email`} required name={`emailLogin`}
+          type="email"
+          className="input__text input__text_type_email"
+          placeholder="Enter email"
+          value={values.emailLogin || ''}
+          onChange={handleChange}
+        />
+        <span className="input-error email-input-error" >{errors.emailLogin}</span>
+      </div>
+      <div className="popup-box__input-container">
+        <p className="popup-box__text popup-box__password">Password</p>
+        <input id={`${formName}-password`} required name={`passwordLogin`}
+          type="password"
+          className="input__text input__text_type_password"
+          placeholder="Enter password"
+          value={values.passwordLogin || ''}
+          onChange={handleChange}
+        />
+        <span className="input-error password-input-error" >{errors.passwordLogin}</span>
+      </div>
     </PopupWithForm>
   )
 

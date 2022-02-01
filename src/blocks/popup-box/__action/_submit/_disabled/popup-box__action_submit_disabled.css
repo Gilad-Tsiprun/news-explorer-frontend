@@ -1,0 +1,5 @@
+.popup-box__action_submit_disabled {
+    background: #E6E8EB;
+    color: #B6BCBF;
+    pointer-events: none;
+}

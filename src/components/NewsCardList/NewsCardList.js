@@ -1,41 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import NewsCard from '../NewsCard/NewsCard.js'
 
-function NewsCardList({ newsCards, handleCardSave, handleCardDelete, handleCardClick, isSearched, isSaved, isLoggedIn, isShowMore }) {
+function NewsCardList({ isHome, searchText, searchCardsCount, newsCards, handleCardSave, handleCardDelete, handleCardClick, isSearched, isLoggedIn, isShowMore, savedCards }) {
   const [newsCardsToRender, setNewsCardsToRender] = useState([]);
 
   useEffect(() => {
-    if (newsCards.length > 3 && isSearched && !isShowMore) {
-      setNewsCardsToRender(newsCards.slice(0, 3));
+    if (newsCards.length > searchCardsCount && isSearched && !isShowMore) {
+      setNewsCardsToRender(newsCards.slice(0, searchCardsCount));
     }
 
     else {
       setNewsCardsToRender(newsCards);
     }
-  }, [newsCards, isSearched, isShowMore]);
+  }, [newsCards, isSearched, isShowMore, searchCardsCount]);
 
   return (
     <ul className="cards__list">
-      {isSearched ? newsCardsToRender.map((newsCard) => (
+      {isSearched ? newsCardsToRender.map((newsCard, index) => (
         <NewsCard
-          key={newsCard._id}
+          searchText={searchText}
+          key={index}
           newsCard={newsCard}
-          handleCardDelete={() => handleCardDelete(newsCard)}
-          handleCardSave={() => handleCardSave(newsCard)}
+          handleCardDelete={handleCardDelete}
+          handleCardSave={handleCardSave}
           handleCardClick={() => handleCardClick(newsCard)}
           isSearched={isSearched}
-          isSaved={isSaved}
-          isLoggedIn={isLoggedIn} />
+          isLoggedIn={isLoggedIn}
+          isHome={isHome}
+          savedCards={savedCards} />
       ))
         : newsCards.map((newsCard) => (
           <NewsCard
             key={newsCard._id}
             newsCard={newsCard}
-            handleCardDelete={() => handleCardDelete(newsCard)}
-            handleCardSave={() => handleCardSave(newsCard)}
+            handleCardDelete={handleCardDelete}
+            handleCardSave={() => { }}
             handleCardClick={() => handleCardClick(newsCard)}
             isSearched={isSearched}
-            isSaved={isSaved}
             isLoggedIn={isLoggedIn} />
         ))}
     </ul>

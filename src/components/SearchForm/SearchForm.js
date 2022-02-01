@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function SearchForm({ handleSearchClick }) {
-  const [searchText, setSearchText] = useState('');
-
-
-  function handleSearchChange(e) {
-    setSearchText(e.target.value);
+function SearchForm({ searchText, handleSearchChange, handleSearchClick }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchText) {
+      handleSearchClick(searchText);
+    }
   }
 
+  const searchButtonClassDisabled = (
+    !searchText ? 'search__button_disabled' : ''
+  );
+
   return (
-    <form className="search__form" name="search-form">
+    <form className="search__form" name="search-form" onSubmit={handleSubmit}>
       <input
         className="search__input"
         type="text"
@@ -19,7 +23,7 @@ function SearchForm({ handleSearchClick }) {
         onChange={handleSearchChange}
         value={searchText || ''} >
       </input>
-      <button type="submit" className='search__button' onClick={handleSearchClick}>Search</button>
+      <button type="submit" className={`search__button ${searchButtonClassDisabled}`}>Search</button>
     </form>
   )
 }

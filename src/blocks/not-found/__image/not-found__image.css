@@ -1,4 +1,5 @@
 .not-found__image {
     display: block;
-    margin: 86px auto 0;
+    margin: 0 auto;
+    padding: 86px 0 0;
 }
