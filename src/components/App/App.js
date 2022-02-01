@@ -34,7 +34,6 @@ function App() {
 
   const searchedCardsCountInRow = 3;
 
-
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -45,7 +44,6 @@ function App() {
         MainApi.checkToken(token)
           .then((res) => {
             setIsLoggedIn(true);
-            history.push('/');
 
             MainApi.getUserInfo()
               .then((user) => {
@@ -69,8 +67,8 @@ function App() {
   }, [history, isLoggedIn])
 
 
-  useEffect(() => {
-    //source for sorting unique values by popularity: https://stackoverflow.com/a/22011372/6365408
+  useEffect(() => { //source for sorting unique values by popularity: https://stackoverflow.com/a/22011372/6365408
+
     const map = savedNewsCards.map(articles => articles.keyword).reduce(function (p, c) {
       p[c] = (p[c] || 0) + 1;
       return p;
@@ -95,22 +93,23 @@ function App() {
   }, [savedNewsCards])
 
   useEffect(() => {
+    setIsSearched(false);
 
-    const initialSearchedCards = JSON.parse(localStorage.getItem('cards') || '[]');
-    const initialSearchTerm = localStorage.getItem('keyword');
+    const initialSearchedCards = JSON.parse(localStorage.getItem('cards') || '[]'); //last news searched
+    const initialSearchTerm = localStorage.getItem('keyword'); //last search term
 
     if (initialSearchTerm) {
       setSearchText(initialSearchTerm);
     }
 
-    if (initialSearchedCards !== []) {
-      setSearchCardsCount(3);
+    if (initialSearchedCards !== [] && initialSearchTerm) {
+      setSearchCardsCount(searchedCardsCountInRow);
       setSearchedNews(initialSearchedCards);
       setIsSearched(true);
     }
   }, [isSearched])
 
-  function turnArticleToNewsCard(article) {
+  function turnArticleToNewsCard(article) { //fetched saved article objects don't match fetched news api objects
     return {
       keyword: article.keyword,
       title: article.title,
@@ -167,7 +166,7 @@ function App() {
         }
       })
       .catch((err) => {
-        if (err.status === 409) {
+        if (err.status === 409) { //conflict, duplicate email
           setSubmitErrorMessage('This email is not available')
         } else {
           setSubmitErrorMessage(registerErrMessage)
@@ -181,6 +180,7 @@ function App() {
       .then((res) => {
         if (res) {
           setIsLoggedIn(true)
+          localStorage.setItem("isLogged", isLoggedIn);
           handleClosePopup();
           setSubmitErrorMessage('');
         } else {
@@ -247,6 +247,7 @@ function App() {
   const handleLogout = () => {
     history.push('/home');
     localStorage.removeItem("jwt");
+    localStorage.removeItem("isLogged");
     handleClosePopup();
     setIsLoggedIn(false);
   }
@@ -256,83 +257,81 @@ function App() {
   }
 
   return (
-    <>
-      <CurrentUserContext.Provider value={currentUser}>
-        <Switch>
-          <Route path="/home" >
-            <Home
-              savedCards={savedNewsCards}
-              searchText={searchText}
-              handleSearchChange={handleSearchChange}
-              searchCardsCount={searchCardsCount}
-              handleShowMore={handleShowMore}
-              handleRegisterOpen={handleRegisterOpen}
-              isPreloading={isPreloading}
-              onSearchClick={handleSearchClick}
-              pathname={pathname}
-              name={currentUser.name}
-              isLoggedIn={isLoggedIn}
-              isHome={pathname !== '/saved-'}
-              logout={handleLogout}
-              newsCards={searchedNews}
-              isSearched={isSearched}
-              handleCardDelete={handleCardDelete}
-              handleCardSave={handleCardSave}
-              handleNavOpen={handleNavOpen}
-              onClose={handleClosePopup}
-              errMessage={searchErrMessage} />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-          <ProtectedRoute path='/saved-news' isLoggedIn={isLoggedIn} handleLoginOpen={handleLoginOpen}>
-            <SavedNews
-              newsCards={savedNewsCards}
-              isSearched={isSearched}
-              pathname={pathname}
-              name={currentUser.name}
-              isLoggedIn={isLoggedIn}
-              isHome={pathname !== '/saved-news'}
-              logout={handleLogout}
-              keyWordsText={keyWordsText}
-              cardsCount={newsCards.length}
-              handleNavOpen={handleNavOpen}
-              handleCardDelete={handleCardDelete}
-              onClose={handleClosePopup}>
-            </SavedNews>
-          </ProtectedRoute>
-        </Switch>
-        <Footer />
+    <CurrentUserContext.Provider value={currentUser}>
+      <Switch>
+        <Route path="/home" >
+          <Home
+            savedCards={savedNewsCards}
+            searchText={searchText}
+            handleSearchChange={handleSearchChange}
+            searchCardsCount={searchCardsCount}
+            handleShowMore={handleShowMore}
+            handleRegisterOpen={handleRegisterOpen}
+            isPreloading={isPreloading}
+            onSearchClick={handleSearchClick}
+            pathname={pathname}
+            name={currentUser.name}
+            isLoggedIn={isLoggedIn}
+            isHome={pathname !== '/saved-'}
+            logout={handleLogout}
+            newsCards={searchedNews}
+            isSearched={isSearched}
+            handleCardDelete={handleCardDelete}
+            handleCardSave={handleCardSave}
+            handleNavOpen={handleNavOpen}
+            onClose={handleClosePopup}
+            errMessage={searchErrMessage} />
+        </Route>
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+        <ProtectedRoute path='/saved-news' handleLoginOpen={handleLoginOpen}>
+          <SavedNews
+            newsCards={savedNewsCards}
+            isSearched={isSearched}
+            pathname={pathname}
+            name={currentUser.name}
+            isLoggedIn={isLoggedIn}
+            isHome={pathname !== '/saved-news'}
+            logout={handleLogout}
+            keyWordsText={keyWordsText}
+            cardsCount={newsCards.length}
+            handleNavOpen={handleNavOpen}
+            handleCardDelete={handleCardDelete}
+            onClose={handleClosePopup}>
+          </SavedNews>
+        </ProtectedRoute>
+      </Switch>
+      <Footer />
 
-        <Register
-          formName='register'
-          handleRegister={handleRegister}
-          handleInfoOpen={handleInfoOpen}
-          name='Sign up'
-          handleLoginOpen={handleLoginOpen}
-          isOpen={isRegisterOpen}
-          onClose={handleClosePopup}
-          errorMessage={submitErrorMessage} />
+      <Register
+        formName='register'
+        handleRegister={handleRegister}
+        handleInfoOpen={handleInfoOpen}
+        name='Sign up'
+        handleLoginOpen={handleLoginOpen}
+        isOpen={isRegisterOpen}
+        onClose={handleClosePopup}
+        errorMessage={submitErrorMessage} />
 
-        <Login
-          formName='login'
-          handleLogin={handleLogin}
-          name='Sign in'
-          handleRegisterOpen={handleRegisterOpen}
-          isOpen={isLoginOpen}
-          onClose={handleClosePopup}
-          errorMessage={submitErrorMessage} />
+      <Login
+        formName='login'
+        handleLogin={handleLogin}
+        name='Sign in'
+        handleRegisterOpen={handleRegisterOpen}
+        isOpen={isLoginOpen}
+        onClose={handleClosePopup}
+        errorMessage={submitErrorMessage} />
 
-        <InfoPopup handleLoginOpen={handleLoginOpen} onClose={handleClosePopup} isOpen={isInfoPopupOpen} />
+      <InfoPopup handleLoginOpen={handleLoginOpen} onClose={handleClosePopup} isOpen={isInfoPopupOpen} />
 
-        <Navigation
-          handleRegisterOpen={handleRegisterOpen}
-          isOpen={isNavOpen}
-          onClose={handleClosePopup}
-          logout={handleLogout}
-          isLoggedIn={isLoggedIn} />
-      </CurrentUserContext.Provider>
-    </>
+      <Navigation
+        handleRegisterOpen={handleRegisterOpen}
+        isOpen={isNavOpen}
+        onClose={handleClosePopup}
+        logout={handleLogout}
+        isLoggedIn={isLoggedIn} />
+    </CurrentUserContext.Provider>
   );
 }
 

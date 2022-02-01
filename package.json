@@ -16,6 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "npm run build && scp -r ./build/* azureuser@gilad2.students.nomoreparties.sbs:/home/azureuser/news-explorer-frontend",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "npx eslint ."

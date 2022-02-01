@@ -8,6 +8,7 @@ function InfoPopup({ handleLoginOpen, name, isOpen, onClose, errStatus }) {
     }, [statusText, errStatus])
 
     useEffect(() => {
+        if (!isOpen) return;
         const close = (e) => {
             if (e.key === 'Escape' || e.target.classList.contains('popup-box_opened')) {
                 onClose();
@@ -19,7 +20,7 @@ function InfoPopup({ handleLoginOpen, name, isOpen, onClose, errStatus }) {
             window.removeEventListener('keydown', close);
             window.removeEventListener('mousedown', close);
         };
-    }, [onClose])
+    }, [onClose, isOpen])
 
     return (
         <section className={`popup-box popup-box_type_${name} ${isOpen ? 'popup-box_opened' : ''}`}>

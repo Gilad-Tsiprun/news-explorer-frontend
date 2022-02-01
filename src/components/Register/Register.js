@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import FormValidation from "../FormValidation/FormValidation";
+import useFormValidation from "../../hooks/useFormValidation";
 
 function Register({ errorMessage, formName, name, handleLoginOpen, isOpen, handleRegister, onClose }) {
-  const { values, handleChange, errors, isValid, resetForm } = FormValidation();
+  const { values, handleChange, errors, isValid, resetForm } = useFormValidation();
 
+
+  useEffect(() => {
+    if (isOpen) {
+      resetForm();
+    }
+  }, [isOpen, resetForm])
 
   const closeRegister = () => {
-    resetForm();
     onClose();
   }
 
   const OpenLogin = () => {
-    resetForm();
     handleLoginOpen();
   }
 

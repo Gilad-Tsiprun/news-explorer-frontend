@@ -3,7 +3,9 @@ import React from 'react';
 function SearchForm({ searchText, handleSearchChange, handleSearchClick }) {
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSearchClick(searchText);
+    if (searchText) {
+      handleSearchClick(searchText);
+    }
   }
 
   const searchButtonClassDisabled = (
@@ -11,7 +13,7 @@ function SearchForm({ searchText, handleSearchChange, handleSearchClick }) {
   );
 
   return (
-    <form className="search__form" name="search-form">
+    <form className="search__form" name="search-form" onSubmit={handleSubmit}>
       <input
         className="search__input"
         type="text"
@@ -21,7 +23,7 @@ function SearchForm({ searchText, handleSearchChange, handleSearchClick }) {
         onChange={handleSearchChange}
         value={searchText || ''} >
       </input>
-      <button type="submit" className={`search__button ${searchButtonClassDisabled}`} onClick={handleSubmit}>Search</button>
+      <button type="submit" className={`search__button ${searchButtonClassDisabled}`}>Search</button>
     </form>
   )
 }
