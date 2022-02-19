@@ -1,14 +1,13 @@
-// import React, { useContext } from 'react'
 import React from 'react';
 import Header from '../Header/Header.js';
 import Search from '../Search/Search.js';
 import Main from '../Main/Main.js';
 import About from '../About/About.js';
 
-// import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 
 
 function Home({
+    handleLoginOpen,
     handleCardDelete,
     searchText,
     handleSearchChange,
@@ -38,6 +37,7 @@ function Home({
             </Search>
 
             <Main
+                handleLoginOpen={handleLoginOpen}
                 savedCards={savedCards}
                 searchText={searchText}
                 searchCardsCount={searchCardsCount}

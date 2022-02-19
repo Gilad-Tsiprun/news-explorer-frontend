@@ -2,7 +2,7 @@ import React from 'react'
 import Preloader from '../Preloader/Preloader.js';
 import NotFound from '../NotFound/NotFound.js';
 import NewsCardList from '../NewsCardList/NewsCardList.js';
-function Main({ savedCards, errMessage, searchText, searchCardsCount, handleShowMore, isPreloading, isSearched, isLoggedIn, newsCards, handleCardDelete, handleCardSave }) {
+function Main({ handleLoginOpen, savedCards, errMessage, searchText, searchCardsCount, handleShowMore, isPreloading, isSearched, isLoggedIn, newsCards, handleCardDelete, handleCardSave }) {
 
   return (
     <>
@@ -22,7 +22,8 @@ function Main({ savedCards, errMessage, searchText, searchCardsCount, handleShow
                   handleCardSave={handleCardSave}
                   handleCardClick={handleCardSave}
                   handleCardDelete={handleCardDelete}
-                  searchCardsCount={searchCardsCount} />
+                  searchCardsCount={searchCardsCount}
+                  handleLoginOpen={handleLoginOpen} />
                 {newsCards.length > searchCardsCount && <button type="button" className="cards__show-more" onClick={handleShowMore}>Show more</button>}
               </>
               : <NotFound errMessage={errMessage} />

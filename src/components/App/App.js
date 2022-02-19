@@ -15,6 +15,8 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './App.css';
 
 function App() {
+  const searchedCardsCountInRow = 3;
+
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState({ name: "", email: "" })
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,17 +28,16 @@ function App() {
   const [isSearched, setIsSearched] = useState(false);
   const [searchedNews, setSearchedNews] = useState([]);
   const [savedNewsCards, setSavedNewsCards] = useState([]);
-  const [searchCardsCount, setSearchCardsCount] = useState(3);
+  const [searchCardsCount, setSearchCardsCount] = useState(searchedCardsCountInRow);
   const [searchText, setSearchText] = useState('');
   const [keyWordsText, setKeyWordsText] = useState('');
   const [searchErrMessage, setSearchErrorMessage] = useState('');
   const [submitErrorMessage, setSubmitErrorMessage] = useState('');
 
-  const searchedCardsCountInRow = 3;
 
   const { pathname } = useLocation();
 
-  useEffect(() => {
+  useEffect(() => { //check token and retrieve user + saved cards info from api
     const checkSession = () => {
       const token = localStorage.getItem('jwt');
 
@@ -261,6 +262,7 @@ function App() {
       <Switch>
         <Route path="/home" >
           <Home
+            handleLoginOpen={handleLoginOpen}
             savedCards={savedNewsCards}
             searchText={searchText}
             handleSearchChange={handleSearchChange}
@@ -330,7 +332,8 @@ function App() {
         isOpen={isNavOpen}
         onClose={handleClosePopup}
         logout={handleLogout}
-        isLoggedIn={isLoggedIn} />
+        isLoggedIn={isLoggedIn}
+        name={currentUser.name} />
     </CurrentUserContext.Provider>
   );
 }
