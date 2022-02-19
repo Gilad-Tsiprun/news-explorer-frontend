@@ -18,9 +18,9 @@
     }
 }
 
-@media screen and (min-width: 901px) and (max-width: 990px) {
+@media screen and (min-width: 901px) and (max-width: 1075px) {
     .about__image {
-        height: 400px;
-        width: 400px;
+        height: 340px;
+        width: 340px;
     }
 }

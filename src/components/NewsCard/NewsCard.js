@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function NewsCard({ isHome, searchText, newsCard, handleCardSave, handleCardDelete, isLoggedIn, savedCards }) {
+function NewsCard({ handleLoginOpen, isHome, searchText, newsCard, handleCardSave, handleCardDelete, isLoggedIn, savedCards }) {
   const [isLoggedInMessage, setIsLoggedInMessage] = useState(false);
   const [isRemoveMessage, setIsRemoveMessage] = useState(false);
   const [isSaveActive, setIsSaveActive] = useState(false);
@@ -57,6 +57,9 @@ function NewsCard({ isHome, searchText, newsCard, handleCardSave, handleCardDele
         handleCardDelete(savedCards[index]);
         setIsSaveActive(false);
       }
+    }
+    else {
+      handleLoginOpen(true);
     }
   }
 

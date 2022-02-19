@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NewsCard from '../NewsCard/NewsCard.js'
 
-function NewsCardList({ isHome, searchText, searchCardsCount, newsCards, handleCardSave, handleCardDelete, handleCardClick, isSearched, isLoggedIn, isShowMore, savedCards }) {
+function NewsCardList({ handleLoginOpen, isHome, searchText, searchCardsCount, newsCards, handleCardSave, handleCardDelete, handleCardClick, isSearched, isLoggedIn, isShowMore, savedCards }) {
   const [newsCardsToRender, setNewsCardsToRender] = useState([]);
 
   useEffect(() => {
@@ -27,7 +27,8 @@ function NewsCardList({ isHome, searchText, searchCardsCount, newsCards, handleC
           isSearched={isSearched}
           isLoggedIn={isLoggedIn}
           isHome={isHome}
-          savedCards={savedCards} />
+          savedCards={savedCards}
+          handleLoginOpen={handleLoginOpen} />
       ))
         : newsCards.map((newsCard) => (
           <NewsCard
